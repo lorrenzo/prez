@@ -8,7 +8,7 @@ export class ChangeColor {
 
 
     private static randomColor() : string {
-        const color = ['red', 'blue', 'green'];
+        const color = ['red', 'blue', 'green', 'yellow', 'grey' ];
         const rand : number = Math.floor((Math.random() * color.length));
 
         return color[rand];

@@ -3,11 +3,18 @@
   "version": "0.0.1",
   "main": "src/",
   "scripts": {
+    "gulp:compile": "gulp compile",
+    "gulp:less": "gulp less",
+    "gulp:js": "gulp js",
+    "gulp:watch": "gulp compile watch",
     "webpack": "webpack --config webpack.config.js",
     "serve": "http-server -a 0.0.0.0 -p 9000"
   },
   "dependencies": {
     "@types/jquery": "^2.0.34",
+    "gulp-less": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.9.1",
     "jquery": "2.2.4",
     "lodash": "4.12.0"
   },
@@ -23,6 +30,10 @@
     "style-loader": "^0.13.1",
     "css-loader": "^0.23.1",
     "less": "^2.7.1",
-    "less-loader": "^2.2.3"
+    "less-loader": "^2.2.3",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "3.1.1",
+    "gulp-watch": "4.3.11",
+    "webpack-stream": "3.2.0"
   }
 }

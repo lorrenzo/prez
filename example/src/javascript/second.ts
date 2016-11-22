@@ -1,8 +1,8 @@
-import {ChangeColor} from "./changeColor";
-import * as $ from 'jquery'
 
 
-const elementToChange = '.js-colorZ';
-$(elementToChange).click( () => {
-    ChangeColor.newColor(elementToChange);
-});
+
+
+import {Raptorize} from "./raptorize";
+new Raptorize();
+
+//$('.myButton').raptorize();
