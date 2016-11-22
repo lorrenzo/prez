@@ -3,6 +3,8 @@ var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var extractLESS = new ExtractTextPlugin('./src/styles/main.css');
 
+// conf webpack 2.x.x
+
 module.exports = {
     entry: [
         './src/javascript/main.ts',

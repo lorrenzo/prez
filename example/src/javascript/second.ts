@@ -1,8 +1,5 @@
+import {Raptorize} from "./lib/raptorize";
 
 
-
-
-import {Raptorize} from "./raptorize";
-new Raptorize();
-
-//$('.myButton').raptorize();
+const raptoto = new Raptorize('.myRaptor');
+raptoto.raptorize();

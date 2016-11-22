@@ -7,20 +7,28 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     gutil = require('gulp-util'),
     less = require('gulp-less'),
+    plumber = require('gulp-plumber'),
     rename = require('gulp-rename'),
     webpack = require('webpack-stream');
 
 // import de la conf webpack pour le bundle des js
 var webpackConfig = require('./webpack.config.gulp');
 
+function mario(error) {
+    gutil.log(error.message);
+    this.emit('end');
+}
+
 gulp.task('js', function () {
     return gulp.src('./src/javascript/**/*.ts')
+        .pipe(plumber(mario))
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('./src/dist/'));
 });
 
 gulp.task('less', function () {
     return gulp.src('./src/styles/**/*.less')
+        .pipe(plumber(mario))
         .pipe(sourcemaps.init())
         .pipe(less({
             paths: [ './src/styles']

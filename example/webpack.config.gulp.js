@@ -1,4 +1,5 @@
 'use strict';
+var webpack = require('webpack');
 var path = require('path');
 
 // /!\ En passant par webpack stream, on utilise un webpack 1.x.x et non 2.x.x
@@ -10,6 +11,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
+        sourceMapFilename: '[name].bundle.js.map',
         filename: '[name].bundle.js'
     },
     module: {
@@ -26,6 +28,14 @@ module.exports = {
         // Add '.ts' and '.tsx' as a resolvable extension.
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
-    devtool: false
+    plugins: [
+        // minimize all JavaScript output of chunks
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //         warnings: false
+        //     }
+        // })
+    ],
+    devtool: 'cheap-module-source-map'
 
 };
