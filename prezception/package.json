@@ -1,0 +1,27 @@
+{
+  "name": "prez",
+  "version": "0.0.1",
+  "main": "src/",
+  "scripts": {
+    "webpack": "webpack --config webpack.config.js",
+    "serve": "http-server -a 0.0.0.0 -p 9000"
+  },
+  "dependencies": {
+    "@types/jquery": "^2.0.34",
+    "jquery": "2.2.4",
+    "lodash": "4.17.2",
+    "reveal": "0.0.4"
+  },
+  "devDependencies": {
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "ts-loader": "1.2.2",
+    "typescript": "2.0.10",
+    "webpack": "2.1.0-beta.27",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "css-loader": "^0.23.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "url-loader": "^0.5.7"
+  }
+}

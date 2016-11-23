@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">    
+<head>
+    <meta charset="utf-8">
+    <title>Reveal.js 3 Slide Demo</title>
+    <link rel="stylesheet" href="./src/dist/styles/main.css" id="theme">
+
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div  >
+                    <div >
+                        <h1><span style="font-size:1.2em" class="custom-title">Webpack</span></h1>
+
+                        <h2>The not another task runner tool</h2>
+                        <h2>http://slides.com/acanimal/webpack</h2>
+                    </div>
+                </div>
+                <div  >
+                    <div >
+                        <img  width="140"  height="162"  
+                              src="https://s3.amazonaws.com/media-p.slid.es/uploads/337684/images/1753386/webpack.svg">
+                    </div>
+                </div>
+            </section>
+            <section >
+                <div >
+                    <div  >
+                        <h1>The task runner way...</h1>
+                    </div>
+                </div>
+            </section>
+            <section  >
+                <div  >
+                    <div  >
+                        <h2>A task runner...</h2>
+                    </div>
+                </div>
+                <div  >
+                    <div  >
+                        <p>... est une application qui automatise toutes les taches répétitives, ennuyantes et consommatrices de temps</p>
+                        <p></p>
+                        <p>Se découpe en <em>steps</em>, qui savent ce qu'ils doivent faire, comment et dans quel ordre</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div  >
+                    <a   href="http://gruntjs.com/"
+                       target="_blank">
+                        <img width="64" height="64" style=""
+                             src="https://s3.amazonaws.com/media-p.slid.es/uploads/337684/images/1753251/grunt-1.png">
+                    </a>
+                </div>
+                <div >
+                    <a href="http://gulpjs.com/"
+                       target="_blank">
+                        <img style="" width="56" height="86"
+                             src="https://s3.amazonaws.com/media-p.slid.es/uploads/337684/images/1753252/gulp.png">
+                    </a>
+                </div>
+            </section>
+            <section  >
+                <div  >
+                    <div  >
+                        <h2>Un exemple gulp...</h2>
+                    </div>
+                </div>
+                <div  >
+                    <div>
+                        <pre class="javascript"><code>// Concatenate JS Files
+gulp.task('scripts', function() {
+    return gulp.src('src/js/*.js')
+                .pipe(concat('main.js'))
+                .pipe(gulp.dest('build/js'));
+});
+
+// Build CSS from SASS
+gulp.task('sass', function() {
+    return sass('src/scss/style.scss', {style: 'compressed'})
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('build/css'));
+});</code></pre>
+                    </div>
+                </div>
+                <div  >
+                    <div  >
+                        <pre class="javascript"><code>// Complex task
+gulp.task('default', ['scripts', 'sass']);</code></pre>
+                    </div>
+                </div>
+            </section>
+            <section  >
+                <div  >
+                    <div  >
+                        <h1>The webpack way...</h1>
+                    </div>
+                </div>
+            </section>
+            <section  >
+                <div  >
+                    <div  >
+                        <h2>Webpack</h2>
+                    </div>
+                </div>
+                <div >
+                    <div  >
+                        <p>Webpack is a module bundler and not a task runner.</p>
+                        <p></p>
+                        <p>Il analyse les dépendences à travers les modules et génère les assets finales (JS mais aussi CSS, HTML, etc).</p>
+                        <p></p>
+                        <p>Il comprend de multiples standard JS (AMD, CommonJs, ES6, Typescript, ...) et CSS (sass, less) qui lui permet de gérer correctement les dépendances. </p>
+                    </div>
+                </div>
+                
+            </section>
+            <section>
+                <div >
+                    <div >
+                        <h2>The flow...</h2>
+                    </div>
+                </div>
+                <div >
+                    <div ><img width="800" height="400" src="https://s3.amazonaws.com/media-p.slid.es/uploads/337684/images/1753292/what-is-webpack.png">
+                    </div>
+                </div>
+            </section>
+          
+            <section  >
+                <div  >
+                    <div >
+                        <h2>Les 3 principaux concepts</h2>
+                    </div>
+                </div>
+                <div  >
+                    <div  >
+                        <ul>
+                            <li>
+                                <em><strong>Entry points</strong></em>: Le ou les fichiers que Webpack va lire pour générer le ou les fichiers finaux avec leurs dépendances.
+                            </li>
+                        </ul>
+                        <p></p>
+                        <ul>
+                            <li>
+                                <em><strong>Loaders</strong></em>: Chaque module va être chargé via un loader (loadception ??).
+                            </li>
+                        </ul>
+                        <p></p>
+                        <ul>
+                            <li>
+                                <em><strong>Plugins</strong></em>: permet de faire des traitements sur les fichiers finaux.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section  >
+                <div >
+                    <div  >
+                        <h1>Un peu de code !!!</h1>
+                    </div>
+                </div>
+                <div  >
+                    <div  ><img  width="250" height="250" src="https://s3.amazonaws.com/media-p.slid.es/uploads/337684/images/1786341/giphy.gif">
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div >
+                    <h2>l'exemple basique</h2>
+                </div>
+                <div sty>
+                    <pre class="javascript" style=" font-size: 13px; line-height: normal;"><code>"use strict";
+
+var path = require("path");
+var Webpack = require("webpack");
+
+// Our configuration
+module.exports = {
+    // Define the entry point
+    entry: path.resolve(__dirname, "js", "app.js"),
+
+    // Output configuration
+    output: {
+        path: path.resolve(__dirname, "assets"),
+        filename: "budle.js"
+    },
+
+    module: {
+        loaders: [
+            // Inform about CSS loaders so that it can be bundled too
+            { test: /\.css$/, loader: "style-loader!css-loader" }
+        ]
+    },
+
+    // Generate source map files
+    devtool: "source-map"
+};
+</code></pre></div> 
+            </section>
+            <section  >
+                <div  >
+                    <div c >
+                        <h2>Webpack sur OWI ...</h2>
+                        <a href="https://bitbucket.org/carboatmedia/valinor/src/512e149153ad?at=master" target="_blank" >Valinor</a>
+                    </div>
+                </div>
+
+                <div   >
+                    <div  >
+                        <pre class="javascript"><code>"use strict";
+
+var webpack = require("webpack");
+var path = require('path');
+var autoprefixer = require('autoprefixer');
+
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var extractLESS = new ExtractTextPlugin('style/main.css');
+
+var targetPath = path.resolve('./web-app/target/');
+
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var cleanTarget = new CleanWebpackPlugin([targetPath]);
+
+module.exports = {
+    debug: true,
+    entry: [
+        "./src/app/typescript/application.ts",
+        "./src/app/style/main.less"
+    ],
+    output: {
+        path: targetPath,
+        sourceMapFilename: 'js/bundle.js.map',
+        filename: "js/bundle.js"
+    },
+    resolve: {
+        root:  [
+            path.resolve('./src/app/typescript'),
+            path.resolve('./src/app/javascripts')
+        ],
+        // Add '.ts' and '.tsx' as a resolvable extension.
+        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+    },
+    // devtool: '#inline-source-map',
+    module: {
+        loaders: [
+             //all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
+            {   test: /\.tsx?$/,
+                loader: 'ts-loader'
+            },
+            { test: /\.json$/, loader: "json-loader" }, // pour la locale
+            {
+                test: /\.less$/,
+                loader: extractLESS.extract(['css','postcss','less'])
+            },
+            { test: /.(png|woff(2)?|eot|ttf|svg|ico)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000&name=images/[name].[ext]' },
+            { test: /\.(jpg|gif)$/, loader: "file-loader?name=images/[name].[ext]" }
+        ]
+    },
+    plugins: [
+        // on expose jquery pour :
+        // jQuery -> bootstrap
+        // window.jQuery -> pour angular qui s'en sert pour remplacer jqLite par jQuery
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        }),
+        extractLESS,
+        cleanTarget
+    ],
+    postcss: function () {
+        return [autoprefixer];
+    }
+};
+</code></pre>
+                    </div>
+                </div>
+                
+            </section>
+            
+            <section  >
+                <div  >
+                     <div >
+                        <img  
+                              src="src/images/questions.jpg">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="./src/dist/javascript/bundle.js"></script>
+</body>
+</html>
