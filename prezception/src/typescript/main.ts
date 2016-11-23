@@ -1,4 +1,4 @@
+import * as _ from 'lodash';
+
 let names = ["toto", "titi", "tata", "tutu"];
-for(let name of names) {
-    console.log(name)
-};
+_.map(names, (name) => console.log(name));
